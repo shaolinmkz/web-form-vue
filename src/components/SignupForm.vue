@@ -124,6 +124,10 @@ form {
   border-radius: 10px;
 }
 
+p {
+  text-align: center;
+}
+
 label {
   color: #aaa;
   display: inline-block;

@@ -1,7 +1,7 @@
 <template>
   <div @click.shift="handleSwitch">
     <SignupForm v-if="active" />
-    <Landing else />
+    <Landing v-if="!active" />
   </div>
 </template>
 
@@ -21,11 +21,11 @@ export default {
 
     const handleSwitch = () => {
       active.value = !active.value;
-      console.log(active)
     };
 
     return {
       handleSwitch,
+      active
     };
   },
 };
