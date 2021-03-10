@@ -1,35 +1,53 @@
 <template>
-  <SignupForm />
+  <div @click.shift="handleSwitch">
+    <SignupForm v-if="active" />
+    <Landing else />
+  </div>
 </template>
 
 <script>
-import SignupForm from './components/SignupForm.vue';
+import SignupForm from "./components/SignupForm.vue";
+import Landing from "./components/Landing.vue";
+import { ref } from "@vue/reactivity";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    SignupForm
-  }
-}
+    SignupForm,
+    Landing,
+  },
+  setup() {
+    const active = ref(false);
+
+    const handleSwitch = () => {
+      active.value = !active.value;
+      console.log(active)
+    };
+
+    return {
+      handleSwitch,
+    };
+  },
+};
 </script>
 
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*,
+*::before,
+*::after {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background: #eee;
-}
-
-*{
-  outline: none;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
 }
 </style>
